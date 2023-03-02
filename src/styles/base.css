@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+
+@layer base {
+  h1 {
+    @apply text-6xl font-bold mb-5;
+  }
+  h2 {
+    @apply text-4xl font-bold mb-5;
+  }
+  a {
+    @apply text-blue-500 hover:underline;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
