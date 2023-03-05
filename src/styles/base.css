@@ -3,6 +3,9 @@
 @tailwind base;
 
 @layer base {
+  h1, h2, h3, p {
+    @apply text-gray-900
+  }
   h1 {
     @apply text-6xl font-bold mb-5;
   }

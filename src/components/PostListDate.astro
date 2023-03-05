@@ -1,0 +1,12 @@
+---
+import { format } from "date-fns";
+const { date } = Astro.props;
+
+const formattedDate = format(date, 'do MMMM y')
+---
+<div class="flex text-gray-500 text-2xl">
+  <time datetime={date.toISOString()}>
+    {formattedDate}
+  </time>
+  <div class="flex-grow border-t mt-4 ml-3" />
+</div>

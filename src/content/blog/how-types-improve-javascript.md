@@ -1,9 +1,11 @@
 ---
-title: 'How a Type System Improves your JavaScript Code'
-description: 'Discover how a type system improves your developer workflow'
-pubDate: 'Feb 24 2019'
-slug: 'how-types-improve-javascript'
-tags: reason,react,javascript,typescript
+title: "How a Type System Improves your JavaScript Code"
+description: "Discover how a type system improves your developer workflow"
+pubDate: "Feb 24 2019"
+slug: "how-types-improve-javascript"
+tags: ["reason", "react", "javascript", "typescript"]
+heroImage: https://images.unsplash.com/photo-1472847720459-21ede812f22a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80
+altText: No
 ---
 
 Vanilla JavaScript is untyped by nature, some will call it “smart” because it is able to figure out what is a number or a string.
@@ -47,7 +49,7 @@ Allow me now to expose this gradual typing with a contrived example.
 
 ```javascript
 let add = (a: string, b: number) => a + b;
-add('some string', 5); // outputs: "some string5"
+add("some string", 5); // outputs: "some string5"
 ```
 
 That function works! This is absolutely preposterous! Now how does Reason handle this?

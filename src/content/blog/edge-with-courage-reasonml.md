@@ -3,11 +3,11 @@ title: 'The Edge, Wit, and Courage of ReasonML'
 description: 'Discover the features of Reason that make it so appealing to a JavaScript developer.'
 pubDate: 'Mar 19 2019'
 slug: 'edge-wit-courage-reasonml'
-tags: reason,ocaml,javascript,fp
-hero_image: steps.jpg
+tags: ["reason","ocaml","javascript","fp"]
+heroImage: https://images.unsplash.com/photo-1502101872923-d48509bff386?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80
 ---
 
-![](/steps.jpg)
+![](https://images.unsplash.com/photo-1502101872923-d48509bff386?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80)
 
 ReasonML has stolen my attention recently.
 

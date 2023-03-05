@@ -1,10 +1,10 @@
 ---
 title: ReasonML with GraphQL, the Future of Type-Safe Web Applications
 description: Build a small ReasonReact web application that consumes a GraphQL endpoint using reason-apollo
-tags: reason,graphql,javascript,fp
+tags: ["reason","graphql","javascript","fp"]
 pubDate: Mar 13 2019
 slug: building-powerful-graphql-servers-with-rust
-hero_image: https://thepracticaldev.s3.amazonaws.com/i/aejew3ps1khqnw7gy0yk.png
+heroImage: https://thepracticaldev.s3.amazonaws.com/i/aejew3ps1khqnw7gy0yk.png
 ---
 
 ![](https://thepracticaldev.s3.amazonaws.com/i/aejew3ps1khqnw7gy0yk.png)

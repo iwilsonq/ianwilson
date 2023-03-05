@@ -3,7 +3,9 @@ title: 'Intro to ReasonML Variants'
 description: 'Learn to wield ReasonML variants to create better, typesafe web applications'
 pubDate: 'Mar 02 2019'
 slug: 'intro-to-reasonml-variants'
-tags: reason,javascript,webdev,functional
+tags: ["reason","javascript","webdev","functional"]
+heroImage: https://images.unsplash.com/photo-1543362905-97efa8d1e4d1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80
+altText: Differnt juice bottles
 ---
 
 ReasonML is a super fast, expressive, and functional programming language. Currently, it can be compiled to optimized JavaScript for the web, WebGL/OpenGL for graphics rendering, or even native bytecode.

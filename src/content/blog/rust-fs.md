@@ -1,9 +1,11 @@
 ---
-title: 'Mastering the File System with Rust'
-pubDate: 'Mar 24 2020'
+title: "Mastering the File System with Rust"
+pubDate: "Mar 24 2020"
 slug: rust-fs
 description: Reading and writing files and directories with Rust
-tags: rust, webdev
+tags: ["rust", "webdev"]
+heroImage: https://images.unsplash.com/photo-1583521214690-73421a1829a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80
+altText: file cabinet
 ---
 
 ![file cabinet](https://images.unsplash.com/photo-1569235186275-626cb53b83ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80)
