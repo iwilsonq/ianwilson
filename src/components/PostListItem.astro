@@ -15,7 +15,7 @@ const { post } = Astro.props;
     </div>
     <div>
       {
-        post.data.tags.map((tag) => (
+        post.data.tags.map((tag: string) => (
           <a class="uppercase mr-6" href="#">
             #{tag}
           </a>
