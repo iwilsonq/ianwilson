@@ -11,7 +11,7 @@ ReasonML is a super fast, expressive, and functional programming language. Curre
 
 One of my favorite features of Reason are variant data types. These types allow us to handle enums in a sane way, forcing us to handle all possibilities for a particular scenario. We can define a variant type like this:
 
-```reason
+```ocaml
 type color =
   | Red
   | Blue
@@ -59,7 +59,7 @@ Hopefully QA will catch this bug before my code lands in production. But even if
 
 The same function in Reason looks like this:
 
-```reason
+```ocaml
 let getMonthlyPriceForCarColor = color =>
   switch(color) {
     | Red => 28
@@ -76,7 +76,7 @@ The error message is actually quite helpful when this happens.
 
 Fixing this issue simply requires that you cover the other possibilities.
 
-```reason
+```ocaml
 let getMonthlyPriceForCarColor = color =>
   switch(color) {
     | Red => 28
@@ -97,7 +97,7 @@ For example, we can adjust our price (arbitraily) based on the shade of grey or 
 
 Updating our color type to the following:
 
-```reason
+```ocaml
 type color =
   | Red
   | Blue
@@ -111,7 +111,7 @@ Now when we run our function, we can let the customer to pick whatever color the
 
 The `Rgb` constructor will be the most expensive since we have to create new paint in order to satisfy that requirement. The higher the values of red, blue, and green color, the closer to \$36 it will be.
 
-```reason
+```ocaml
 let getMonthlyPriceForCarColor = color =>
   switch(color) {
     | Red => 28
@@ -146,7 +146,7 @@ In conjuction with data structures like variants, tuples, and lists, pattern mat
 
 The only thing I have yet to do to make this example stronger, is validate the constructor inputs. So to send off this post with a bang, I am going to make some helper functions.
 
-```reason
+```ocaml
 let validatePercentage = pct =>
   restrictRangef(pct, 0.0, 1.0);
 
@@ -160,7 +160,7 @@ let validateRgb = (red, blue, green) => {
 
 These functions validate the required input to the extend that they cut off the values if they are too low or too high. Here are their corresponding `restrictRange` functions.
 
-```reason
+```ocaml
 let restrictRange = (number, min, max) =>
   if (number > max) {
     max;
@@ -186,7 +186,7 @@ A little extra code here is a small price to pay here when we have superior type
 
 Finally I can update our `getMonthlyPriceForCarColor` function with our new helpers:
 
-```reason
+```ocaml
 let getMonthlyPriceForCarColor = color =>
   switch (color) {
   | Red => 28

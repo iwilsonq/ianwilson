@@ -49,14 +49,14 @@ It also does away with silly errors like "undefined is not a function" or "canno
 
 It's powerful type inference cleans up a lot of the verbosity associated with annotating functions and variables with types. The following function adds two integers. Not two floats or two strings, just two integers.
 
-```reason
+```ocaml
   /* the type system knows that the arguments and the return value are ints here */
   let add = (a, b) => a + b;
 ```
 
 If that example is too basic, then try this one. Note how I am not annotating the types in the function signatures:
 
-```reason
+```ocaml
   type animal =
     | Dog
     | Cat

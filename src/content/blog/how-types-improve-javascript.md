@@ -32,7 +32,7 @@ Reason accomplished perfect type safety through inference, and makes annotating 
 
 Consider the following code:
 
-```reason
+```ocaml
 let add = (a, b) => a + b;
 ```
 
@@ -53,7 +53,7 @@ add("some string", 5); // outputs: "some string5"
 
 That function works! This is absolutely preposterous! Now how does Reason handle this?
 
-```reason
+```ocaml
 let add = (a, b) => a + b;
 add("some string", 5);
 /*
