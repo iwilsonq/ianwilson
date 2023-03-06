@@ -20,7 +20,7 @@ const posts = (await getCollection("blog")).sort(
     <Header />
     <main>
       <h1>My Blog</h1>
-      <p class="text-2xl mb-12">
+      <p class="text-2xl mb-8">
         Here you'll find my collected writings on topics from web development to
         productivity.
       </p>
@@ -28,7 +28,7 @@ const posts = (await getCollection("blog")).sort(
         <ul>
           {
             posts.map((post) => (
-              <li class="mb-12">
+              <li class="mb-8">
                 <PostListItem post={post} />
               </li>
             ))

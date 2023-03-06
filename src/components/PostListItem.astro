@@ -5,23 +5,20 @@ const { post } = Astro.props;
 ---
 
 <PostListDate date={post.data.pubDate} />
-<div class="flex justify-between">
-  <div class="flex flex-col justify-between">
-    <div>
-      <a class="hover:no-underline" href={`/blog/${post.slug}/`}>
-        <h2>{post.data.title}</h2>
-      </a>
-      <p>{post.data.description}</p>
-    </div>
-    <div>
-      {
-        post.data.tags.map((tag: string) => (
-          <a class="uppercase mr-6" href="#">
-            #{tag}
-          </a>
-        ))
-      }
-    </div>
+<div class="flex flex-col justify-between">
+  <div class="mb-4">
+    <a class="hover:no-underline" href={`/blog/${post.slug}/`}>
+      <h3>{post.data.title}</h3>
+    </a>
+    <p>{post.data.description}</p>
   </div>
-  <img class="rounded-xl max-w-xs ml-8" src={post.data.heroImage} />
+  <div>
+    {
+      post.data.tags.map((tag: string) => (
+        <a class="uppercase mr-6" href="#">
+          #{tag}
+        </a>
+      ))
+    }
+  </div>
 </div>

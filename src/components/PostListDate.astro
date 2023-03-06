@@ -4,7 +4,7 @@ const { date } = Astro.props;
 
 const formattedDate = format(date, 'do MMMM y')
 ---
-<div class="flex text-gray-500 text-2xl">
+<div class="flex text-gray-400 text-lg">
   <time datetime={date.toISOString()}>
     {formattedDate}
   </time>
