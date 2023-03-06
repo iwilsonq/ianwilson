@@ -7,10 +7,6 @@ tags: ["rust", "graphql", "tutorial", "webdev"]
 heroImage: https://images.unsplash.com/photo-1593062037896-764e9f52029e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80
 ---
 
-![](https://images.unsplash.com/photo-1593062037896-764e9f52029e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
-
-_Photo by Bill Oxford on Unsplash_
-
 Setting up a GraphQL server with Rust, Juniper, Diesel, and Actix; learning about Rust's web frameworks and powerful macros along the way.
 
 Source Code: [github.com/iwilsonq/rust-graphql-example](https://github.com/iwilsonq/rust-graphql-example)

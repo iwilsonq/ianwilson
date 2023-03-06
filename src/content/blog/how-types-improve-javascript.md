@@ -5,7 +5,6 @@ pubDate: "Feb 24 2019"
 slug: "how-types-improve-javascript"
 tags: ["reason", "react", "javascript", "typescript"]
 heroImage: https://images.unsplash.com/photo-1472847720459-21ede812f22a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80
-altText: No
 ---
 
 Vanilla JavaScript is untyped by nature, some will call it “smart” because it is able to figure out what is a number or a string.

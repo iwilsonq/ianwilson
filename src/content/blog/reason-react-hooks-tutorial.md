@@ -5,10 +5,7 @@ slug: reason-react-hooks-tutorial
 description: Learn Reason React by building a Pomodoro Timer with React hooks
 tags: ["reason","javascript","react","tutorial"]
 heroImage: https://images.unsplash.com/photo-1431499012454-31a9601150c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80
-altText: timer
 ---
-
-![timer](https://images.unsplash.com/photo-1513544705284-99373737fab6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80)
 
 ReasonML is a programming language that combines the simplicity of JavaScript with the performance of OCaml. JavaScript programmers should give ReasonML a try. Reason's inherits OCaml's typesystem as well as the approachability of JavaScript.
 

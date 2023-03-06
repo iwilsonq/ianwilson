@@ -5,12 +5,7 @@ slug: rust-fs
 description: Reading and writing files and directories with Rust
 tags: ["rust", "webdev"]
 heroImage: https://images.unsplash.com/photo-1569235186275-626cb53b83ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80
-altText: file cabinet
 ---
-
-![file cabinet](https://images.unsplash.com/photo-1569235186275-626cb53b83ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80)
-
-_Photo by [Maksym Kaharlytskyi](https://unsplash.com/@qwitka) on Unsplash_
 
 Building backend services with Rust can be difficult if you have to keep 10 tabs worth of documentation open at all times. I find it helpful to practice and learn how certain libraries work, reducing the time spent combing through documentation.
 
