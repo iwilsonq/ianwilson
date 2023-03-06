@@ -1,12 +1,12 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
-import ianLaptop from '../../public/ian_laptop.svg';
-import linkedinLogo from '../../public/linkedin.svg';
-import twitterLogo from '../../public/twitter.svg';
+import ianLaptop from "../../public/ian_laptop.svg";
+import linkedinLogo from "../../public/linkedin.svg";
+import twitterLogo from "../../public/twitter.svg";
 ---
 
 <!DOCTYPE html>
@@ -14,63 +14,55 @@ import twitterLogo from '../../public/twitter.svg';
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body class="max-w-screen-lg mx-auto mt-12 font-sans">
+  <body>
     <Header title={SITE_TITLE} />
     <main>
-      <div>
-        <div class="grid grid-cols-2 gap-6 mb-16">
-          <div>
-            <span class="font-mono text-3xl"> Hello there, I'm</span>
-            <br />
-            <h1 class="mb-4">Ian Wilson</h1>
-            <p class="text-2xl mb-4">
-              Full-stack web developer at
-              <span class="text-red-500 font-bold"> OneSignal</span>
-            </p>
-            <p class="mb-4">
-              I develop solutions that assist businesses and
-              developers in their day-to-day operations. One way I
-              achieve this is by writing articles on emerging
-              technologies like Rust, GraphQL, OCaml, and Javascript.
-            </p>
-            <div class="mb-4">
-              When I'm not writing or coding, I'm generally
-              <ul class="list-disc list-inside pl-2">
-                <li>running the roads and trails by my home</li>
-                <li>
-                  exploring my musical interests via instruments and
-                  karaoke
-                </li>
-                <li>
-                  having a bevy while watching sports or playing video
-                  games
-                </li>
-              </ul>
-            </div>
-            <p class="mb-4 italic">
-              Previously worked at Facebook, Boston Scientific, The
-              Boston Consulting Group, and Pirashield.
-            </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div>
+          <span class="font-mono text-3xl"> Hello there, I'm</span>
+          <br />
+          <h1 class="mb-4">Ian Wilson</h1>
+          <p class="text-2xl mb-4">
+            Full-stack web developer at
+            <span class="text-red-500 font-bold"> OneSignal</span>
+          </p>
+          <p class="mb-4">
+            I develop solutions that assist businesses and developers in their
+            day-to-day operations. One way I achieve this is by writing articles
+            on emerging technologies like Rust, GraphQL, OCaml, and Javascript.
+          </p>
+          <div class="mb-4">
+            When I'm not writing or coding, I'm generally
+            <ul class="list-disc list-inside pl-2">
+              <li>running the roads and trails by my home</li>
+              <li>
+                exploring my musical interests via instruments and karaoke
+              </li>
+              <li>
+                having a bevy while watching sports or playing video games
+              </li>
+            </ul>
           </div>
-          <div class="flex items-end">
-            <img src={ianLaptop} />
-          </div>
+          <p class="mb-4 italic">
+            Previously worked at Facebook, Boston Scientific, The Boston
+            Consulting Group, and Pirashield.
+          </p>
         </div>
-        <div class="flex">
-          <span class="mr-8">
-            <a
-              href="https://linkedin.com/in/iwilsonq"
-              target="_blank"
-            >
-              <img src={linkedinLogo} />
-            </a>
-          </span>
-          <span>
-            <a href="https://twitter.com/iwilsonq" target="_blank">
-              <img src={twitterLogo} />
-            </a>
-          </span>
+        <div class="flex items-end max-md:hidden">
+          <img src={ianLaptop} />
         </div>
+      </div>
+      <div class="flex">
+        <span class="mr-8">
+          <a href="https://linkedin.com/in/iwilsonq" target="_blank">
+            <img src={linkedinLogo} />
+          </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/iwilsonq" target="_blank">
+            <img src={twitterLogo} />
+          </a>
+        </span>
       </div>
     </main>
     <Footer />

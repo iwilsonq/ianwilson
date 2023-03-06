@@ -15,10 +15,10 @@ const { title, description, pubDate } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
 
-  <body class="max-w-screen-lg mx-auto mt-12 font-sans">
+  <body>
     <Header />
     <main class="flex justify-center">
-      <article class="prose lg:prose-xl">
+      <article class="prose lg:prose-xl max-w-full md:max-w-2xl">
         <h1>{title}</h1>
         <div class="font-serif">
           <slot />

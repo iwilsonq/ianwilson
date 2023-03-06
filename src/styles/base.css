@@ -3,8 +3,11 @@
 @tailwind base;
 
 @layer base {
+  body {
+    @apply max-w-screen-lg mx-auto mt-12 font-sans px-4 md:px-8;
+  }
   h1, h2, h3, p {
-    @apply text-gray-900
+    @apply text-gray-900;
   }
   h1 {
     @apply text-6xl font-bold mb-5;
