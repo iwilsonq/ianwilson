@@ -187,7 +187,7 @@ Rather than create a todo app, I decided to create a list of video games that I 
 
 As we are working with a GraphQL server, we should be able to figure out exactly how to call it by observing the schema.
 
-```Graphql
+```graphql
   type VideoGame {
     id: ID!
     title: String!

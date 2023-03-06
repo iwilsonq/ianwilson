@@ -78,8 +78,6 @@ npm i -g serve
 serve build/
 ```
 
-![initial project](./initial_project.png)
-
 ### Cleaning up the Environment
 
 I want to clean up the default project structure before writing an implementation.
@@ -103,7 +101,7 @@ I want to clean up the default project structure before writing an implementatio
 
 Replace Index.re with the following:
 
-```reason
+```ocaml
 ReactDOMRe.renderToElementWithId(<Timer />, "root");
 ```
 
@@ -124,7 +122,7 @@ And now with all out that taken care of, we can begin the fun part, the implemen
 
 After cleaning up, notice that we are trying to render a `Timer` component but we have not even defined one. Let us write a stateless component to render to the page.
 
-```reason
+```ocaml
 [@react.component]
 let make = () => {
   <div> {ReasonReact.string("One day this will be a timer")} </div>;
@@ -133,7 +131,7 @@ let make = () => {
 
 I want to highlight how simple this code is. Writing a stateless React component in the previous version was more verbose:
 
-```reason
+```ocaml
 /* DO NOT WRITE THIS */
 let component = ReasonReact.statelessComponent("Timer");
 let make = () => {
@@ -157,7 +155,7 @@ When we consider any timer, we usually have three buttons: `Start`, `Stop`, and 
 
 At the top of Timer.re, where we will build this whole app, add the following:
 
-```reason
+```ocaml
 type state = {
   seconds: int,
   isTicking: bool
@@ -174,7 +172,7 @@ How easy it is, to implement an application after you have described your states
 
 Next we'll update our make function to use a reducer:
 
-```reason
+```ocaml
 [@react.component]
 let make = () => {
   let (state, dispatch) =
@@ -209,7 +207,7 @@ To update the timer every second, we need to create an effect. In the JavaScript
 
 Let us add this hook between the `useReducer` function and the returned JSX.
 
-```reason
+```ocaml
 React.useEffect0(() => {
   let timerId = Js.Global.setInterval(() => dispatch(Tick), 1000);
   Some(() => Js.Global.clearInterval(timerId));
@@ -225,7 +223,7 @@ If you run the code and refresh your browser, you'll see that our timer is going
 
 It should not do this, so lets update our reducer again to account for whether the `isTicking` flag is true or false. We will also make sure that `seconds` are greater than zero so we do not go negative.
 
-```reason
+```ocaml
 let (state, dispatch) =
     React.useReducer(
       (state, action) =>
@@ -248,7 +246,7 @@ To make this Timer even better, I am going to add buttons.
 
 Let us define a Button module in the same file as our Timer, right above the make function.
 
-```reason
+```ocaml
 module Button = {
   [@react.component]
   let make = (~label, ~onClick) => {
@@ -259,7 +257,7 @@ module Button = {
 
 This button takes a label and an onClick prop. We can add them to our Timer, at the bottom of the make function like so:
 
-```reason
+```ocaml
 
 [@react.component]
 let make = () => {
@@ -281,9 +279,7 @@ let make = () => {
 };
 ```
 
-Try running this in your browser, you should see:
-
-![start and stop buttons](./start_stop.png)
+Try running this in your browser, you should see start and stop buttons.
 
 If you click START, it will start. If you click STOP it will stop. RESET will bring the timer back up to the initial time. Pretty straightforward how it just works!
 
@@ -295,7 +291,7 @@ Let us add some styles and make this timer look pretty. Or at least better.
 
 Update the JSX in Timer to the following:
 
-```reason
+```ocaml
 [@react.component]
 let make = () => {
   /* useReducer */
@@ -332,7 +328,7 @@ I have introduced the default styles that come with ReasonReact. They are not my
 
 I also introduce a `formatTime` function. Let us implement that function so our project compiles:
 
-```reason
+```ocaml
 let padNumber = numString =>
   if (numString |> int_of_string < 10) {
     "0" ++ numString;
@@ -353,15 +349,13 @@ I included `padNumber` as well, a useful utility that pads minutes and seconds w
 
 I will be honest, this timer looks pretty good right now and I have not even styled the buttons. I will leave that as a task for the reader if they are so inclined.
 
-![finished timer](./finished_timer.png)
-
 ## Update the Document Title
 
 The concept of a timer in the browser can be further improved. If we have the time remaining persist in the browser tab itself, it would be visible if the user is in another tab.
 
 All we have to do to get that going is update our `Tick` action in the reducer. I'll even show off ReasonML's interop with JavaScript by updating the document title. Note the `%bs.raw` directive, this allows us to put on the JavaScript training wheels and use it directly.
 
-```reason
+```ocaml
 let updateTitle: string => unit = [%bs.raw
   {|
   function updateTitle(remaining) {
@@ -396,9 +390,7 @@ let (state, dispatch) =
 };
 ```
 
-And with that, I am finished with the implementation of the timer:
-
-![finished timer with title update](./finished_timer_title.png)
+And with that, I am finished with the implementation of the timer.
 
 ## Summary
 
