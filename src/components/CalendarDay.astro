@@ -1,0 +1,28 @@
+---
+import { format, isFirstDayOfMonth, isToday } from 'date-fns';
+const { isCurrentMonth, date, showDay } = Astro.props;
+---
+
+<div class="border flex flex-col items-center text-sm min-h-32">
+  <div class="uppercase text-gray-400 text-xs">
+    {showDay ? format(date, 'E') : null}
+  </div>
+  <div class={isCurrentMonth ? '' : 'text-gray-400'}>
+    <div class="flex flex-col items-center mt-1">
+      <span
+        class:list={[
+          'w-6 min-w-max h-6 flex justify-center items-center rounded-full',
+          {
+            'bg-blue-500': isToday(date),
+            'text-white': isToday(date),
+          },
+        ]}
+      >
+        {format(date, isFirstDayOfMonth(date) ? 'MMM d' : 'd')}
+      </span>
+    </div>
+    <div>
+      <slot />
+    </div>
+  </div>
+</div>

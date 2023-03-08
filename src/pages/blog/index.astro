@@ -1,12 +1,12 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { getCollection } from "astro:content";
-import PostListItem from "../../components/PostListItem.astro";
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import PostListItem from '../../components/PostListItem.astro';
 
-const posts = (await getCollection("blog")).sort(
+const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
@@ -19,10 +19,10 @@ const posts = (await getCollection("blog")).sort(
   <body>
     <Header />
     <main>
-      <h1>My Blog</h1>
+      <h1>Blog</h1>
       <p class="text-2xl mb-8">
-        Here you'll find my collected writings on topics from web development to
-        productivity.
+        Here you'll find my collected writings on topics from web
+        development to productivity.
       </p>
       <section>
         <ul>

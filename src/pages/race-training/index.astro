@@ -1,0 +1,44 @@
+---
+import { formatDuration, intervalToDuration } from 'date-fns';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Calendar from '../../components/Calendar.astro';
+
+const targetDate = new Date(2023, 5, 17, 6);
+const duration = intervalToDuration({
+  start: new Date(),
+  end: targetDate,
+});
+console.log(duration);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>Race Training</h1>
+      <p class="text-xl mb-8">
+        {
+          formatDuration(duration, {
+            format: ['months', 'days'],
+            delimiter: ' and ',
+          })
+        }
+        remaining until the <a
+          href="https://www.leadvilleraceseries.com/run/trailmarathonheavyhalf/"
+          >Leadville Marathon</a
+        > on June 17.
+      </p>
+      <section>
+        <Calendar />
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

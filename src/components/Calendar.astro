@@ -1,0 +1,76 @@
+---
+import {
+  addDays,
+  isBefore,
+  getDaysInMonth,
+  startOfMonth,
+  subDays,
+  addMonths,
+} from 'date-fns';
+import CalendarDay from './CalendarDay.astro';
+
+const TOTAL_CALENDAR_DATES = 35;
+const DAYS_OF_WEEK = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
+const currentMonthStartDate = startOfMonth(new Date());
+
+type CalendarDate = {
+  date: Date;
+  isCurrentMonth: boolean;
+};
+
+const calendarDates: Array<CalendarDate> = [];
+const previousMonthFillerDays = currentMonthStartDate.getDay();
+if (previousMonthFillerDays > 0) {
+  for (
+    let date = subDays(
+      currentMonthStartDate,
+      previousMonthFillerDays
+    );
+    isBefore(date, currentMonthStartDate);
+    date = addDays(date, 1)
+  ) {
+    calendarDates.push({ date, isCurrentMonth: false });
+  }
+}
+
+for (
+  let date = currentMonthStartDate;
+  date.getDate() < getDaysInMonth(currentMonthStartDate);
+  date = addDays(date, 1)
+) {
+  calendarDates.push({ date, isCurrentMonth: true });
+}
+
+const nextMonthFillerDays =
+  TOTAL_CALENDAR_DATES - calendarDates.length;
+if (nextMonthFillerDays > 0) {
+  for (
+    let date = addMonths(currentMonthStartDate, 1);
+    calendarDates.length < TOTAL_CALENDAR_DATES;
+    date = addDays(date, 1)
+  ) {
+    calendarDates.push({ date, isCurrentMonth: false });
+  }
+}
+---
+
+<div class="grid grid-cols-7 auto-rows-fr">
+  {
+    calendarDates.map((calendarDate, i) => (
+      <CalendarDay
+        date={calendarDate.date}
+        isCurrentMonth={calendarDate.isCurrentMonth}
+        showDay={i < DAYS_OF_WEEK.length}
+      />
+    ))
+  }
+</div>
