@@ -1,10 +1,18 @@
 import path from 'path';
 import fs from 'fs';
 import { Decoder, Stream } from '@garmin-fit/sdk';
-
-const DATA_DIR = 'data';
+import Airtable from 'airtable';
+import dotenv from 'dotenv';
 
 // Main
+dotenv.config();
+
+Airtable.configure({
+  endpointUrl: 'https://api.airtable.com',
+  apiKey: process.env.AIRTABLE_ACCESS_TOKEN,
+});
+const trackBase = Airtable.base('appRKlealQJaMbrRy');
+const DATA_DIR = 'data';
 
 const dir = fs.opendirSync(DATA_DIR);
 for await (const dirent of dir) {
@@ -29,20 +37,83 @@ function importFitFile(pathname) {
 
   messages.sessionMesgs.forEach((session) => {
     if (session.sport === 'running') {
+      console.log('sessionMesgs', messages.sessionMesgs);
+      console.log('workoutMesgs', messages.workoutMesgs);
       console.log(
-        formatDistance(session.totalDistance),
-        'in',
-        formatTime(session.totalTimerTime)
+        `Distance: ${session.totalDistance} (${formatDistance(
+          session.totalDistance
+        )})`
+      );
+      console.log(
+        `Time: ${session.totalTimerTime} (${formatTime(
+          session.totalTimerTime
+        )})`
+      );
+
+      createWorkout(
+        messages.workoutMesgs[0].wktName,
+        session.totalDistance,
+        session.totalTimerTime,
+        session.startTime,
+        session.totalAscent,
+        session.totalDescent,
+        session.maxAltitude,
+        session.avgHeartRate,
+        session.maxHeartRate,
+        session.avgCadence,
+        session.totalCalories,
+        session.avgSpeed,
+        session.maxSpeed
       );
     }
   });
-  console.log('keys', Object.keys(messages));
-  console.log('lapMesgs.length', messages.lapMesgs.length);
-  console.log('sessionMesgs', messages.sessionMesgs);
-  console.log('activityMesgs', messages.activityMesgs);
-  console.log('recordMesgs', messages.recordMesgs);
-  console.log('eventMesgs', messages.eventMesgs);
-  console.log('workoutMesgs', messages.workoutMesgs);
+}
+
+function createWorkout(
+  name,
+  distance,
+  duration,
+  startTime,
+  totalAscent,
+  totalDescent,
+  maxAltitude,
+  avgHeartRate,
+  maxHeartRate,
+  avgCadence,
+  totalCalories,
+  avgSpeed,
+  maxSpeed
+) {
+  trackBase('Workouts').create(
+    [
+      {
+        fields: {
+          Name: name,
+          Distance: distance,
+          Duration: duration,
+          'Start Time': startTime,
+          'Total Ascent': totalAscent,
+          'Total Descent': totalDescent,
+          'Max Altitude': maxAltitude,
+          'Avg HeartRate': avgHeartRate,
+          'Max HeartRate': maxHeartRate,
+          'Avg Cadence': avgCadence,
+          'Total Calories': totalCalories,
+          'Avg Speed': avgSpeed,
+          'Max Speed': maxSpeed,
+        },
+      },
+    ],
+    (err, records) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      records.forEach(function (record) {
+        console.log('Added', record.getId());
+      });
+    }
+  );
 }
 
 function formatTime(seconds) {

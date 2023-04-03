@@ -5,12 +5,17 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Calendar from '../../components/Calendar.astro';
+import { Workouts } from '../../lib/workouts';
 
 const targetDate = new Date(2023, 5, 17, 6);
 const duration = intervalToDuration({
   start: new Date(),
   end: targetDate,
 });
+
+const response = await fetch('http://127.0.0.1:3000/api/workouts');
+const data = await response.json();
+const workouts = data.records;
 ---
 
 <!DOCTYPE html>
@@ -35,7 +40,7 @@ const duration = intervalToDuration({
         > on June 17.
       </p>
       <section>
-        <Calendar />
+        <Calendar workouts={workouts} />
       </section>
     </main>
     <Footer />

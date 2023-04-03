@@ -10,6 +10,8 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@garmin-fit/sdk": "^21.107.0"
+    "@garmin-fit/sdk": "^21.107.0",
+    "airtable": "^0.11.6",
+    "dotenv": "^16.0.3"
   }
 }

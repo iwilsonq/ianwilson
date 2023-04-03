@@ -1,4 +1,5 @@
 ---
+import type { Workout } from '../lib/workouts';
 import {
   addDays,
   isBefore,
@@ -6,7 +7,9 @@ import {
   startOfMonth,
   subDays,
   addMonths,
+  isSameDay,
 } from 'date-fns';
+import { formatTime } from '../lib/time';
 import CalendarDay from './CalendarDay.astro';
 
 const TOTAL_CALENDAR_DATES = 35;
@@ -20,11 +23,14 @@ const DAYS_OF_WEEK = [
   'Saturday',
 ];
 
+const { workouts } = Astro.props;
+
 const currentMonthStartDate = startOfMonth(new Date());
 
 type CalendarDate = {
   date: Date;
   isCurrentMonth: boolean;
+  workout: Workout;
 };
 
 const calendarDates: Array<CalendarDate> = [];
@@ -38,7 +44,13 @@ if (previousMonthFillerDays > 0) {
     isBefore(date, currentMonthStartDate);
     date = addDays(date, 1)
   ) {
-    calendarDates.push({ date, isCurrentMonth: false });
+    calendarDates.push({
+      date,
+      isCurrentMonth: false,
+      workout: workouts.find((workout) =>
+        isSameDay(new Date(workout.startTime), date)
+      ),
+    });
   }
 }
 
@@ -47,7 +59,13 @@ for (
   date.getDate() < getDaysInMonth(currentMonthStartDate);
   date = addDays(date, 1)
 ) {
-  calendarDates.push({ date, isCurrentMonth: true });
+  calendarDates.push({
+    date,
+    isCurrentMonth: true,
+    workout: workouts.find((workout) =>
+      isSameDay(new Date(workout.startTime), date)
+    ),
+  });
 }
 
 const nextMonthFillerDays =
@@ -58,7 +76,13 @@ if (nextMonthFillerDays > 0) {
     calendarDates.length < TOTAL_CALENDAR_DATES;
     date = addDays(date, 1)
   ) {
-    calendarDates.push({ date, isCurrentMonth: false });
+    calendarDates.push({
+      date,
+      isCurrentMonth: false,
+      workout: workouts.find((workout) =>
+        isSameDay(new Date(workout.startTime), date)
+      ),
+    });
   }
 }
 ---
@@ -70,7 +94,13 @@ if (nextMonthFillerDays > 0) {
         date={calendarDate.date}
         isCurrentMonth={calendarDate.isCurrentMonth}
         showDay={i < DAYS_OF_WEEK.length}
-      />
+      >
+        {calendarDate.workout
+          ? `${calendarDate.workout.distanceMi.toPrecision(
+              3
+            )}mi in ${formatTime(calendarDate.workout.duration)}`
+          : null}
+      </CalendarDay>
     ))
   }
 </div>
