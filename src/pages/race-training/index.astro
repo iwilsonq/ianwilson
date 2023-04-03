@@ -13,7 +13,12 @@ const duration = intervalToDuration({
   end: targetDate,
 });
 
-const response = await fetch('http://127.0.0.1:3000/api/workouts');
+const BASE_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://127.0.0.1:3000'
+    : 'https://iwilsonq.com';
+
+const response = await fetch(`${BASE_URL}/api/workouts`);
 const data = await response.json();
 const workouts = data.records;
 ---
