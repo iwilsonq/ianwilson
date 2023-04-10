@@ -9,8 +9,9 @@ import {
   addMonths,
   isSameDay,
 } from 'date-fns';
-import { formatTime } from '../lib/time';
 import CalendarDay from './CalendarDay.astro';
+import { formatTime } from '../lib/time';
+import { toFeet, toMiles } from '../lib/distance';
 
 const TOTAL_CALENDAR_DATES = 35;
 const DAYS_OF_WEEK = [
@@ -23,14 +24,19 @@ const DAYS_OF_WEEK = [
   'Saturday',
 ];
 
-const { workouts } = Astro.props;
+interface Props {
+  selectedDate: Date;
+  workouts: Array<Workout>;
+}
 
-const currentMonthStartDate = startOfMonth(new Date());
+const { selectedDate, workouts } = Astro.props;
+
+const currentMonthStartDate = startOfMonth(selectedDate);
 
 type CalendarDate = {
   date: Date;
   isCurrentMonth: boolean;
-  workout: Workout;
+  workout: Workout | null;
 };
 
 const calendarDates: Array<CalendarDate> = [];
@@ -47,9 +53,10 @@ if (previousMonthFillerDays > 0) {
     calendarDates.push({
       date,
       isCurrentMonth: false,
-      workout: workouts.find((workout) =>
-        isSameDay(new Date(workout.startTime), date)
-      ),
+      workout:
+        workouts.find((workout) =>
+          isSameDay(new Date(workout.startTime), date)
+        ) || null,
     });
   }
 }
@@ -62,9 +69,10 @@ for (
   calendarDates.push({
     date,
     isCurrentMonth: true,
-    workout: workouts.find((workout) =>
-      isSameDay(new Date(workout.startTime), date)
-    ),
+    workout:
+      workouts.find((workout) =>
+        isSameDay(new Date(workout.startTime), date)
+      ) || null,
   });
 }
 
@@ -79,28 +87,72 @@ if (nextMonthFillerDays > 0) {
     calendarDates.push({
       date,
       isCurrentMonth: false,
-      workout: workouts.find((workout) =>
-        isSameDay(new Date(workout.startTime), date)
-      ),
+      workout:
+        workouts.find((workout) =>
+          isSameDay(new Date(workout.startTime), date)
+        ) || null,
     });
   }
 }
+
+const weeks = calendarDates.reduce<Array<Array<CalendarDate>>>(
+  (accu, curr, index) => {
+    if (index % 7 === 0) {
+      accu.push([]);
+    }
+
+    accu[accu.length - 1].push(curr);
+
+    return accu;
+  },
+  []
+);
 ---
 
-<div class="grid grid-cols-7 auto-rows-fr">
+<div class="grid grid-cols-8 auto-rows-fr">
   {
-    calendarDates.map((calendarDate, i) => (
-      <CalendarDay
-        date={calendarDate.date}
-        isCurrentMonth={calendarDate.isCurrentMonth}
-        showDay={i < DAYS_OF_WEEK.length}
-      >
-        {calendarDate.workout
-          ? `${calendarDate.workout.distanceMi.toPrecision(
-              3
-            )}mi in ${formatTime(calendarDate.workout.duration)}`
-          : null}
-      </CalendarDay>
-    ))
+    weeks.map((calendarDates) => {
+      let weeklyDistance = 0;
+      let weeklyDuration = 0;
+      let weeklyAscent = 0;
+
+      const calendarDateMarkup = calendarDates.map(
+        (calendarDate, i) => {
+          if (calendarDate.workout) {
+            weeklyDistance += calendarDate.workout.distance;
+            weeklyDuration += calendarDate.workout.duration;
+
+            weeklyAscent += calendarDate.workout.totalAscent ?? 0;
+          }
+
+          return (
+            <CalendarDay
+              date={calendarDate.date}
+              isCurrentMonth={calendarDate.isCurrentMonth}
+              showDay={i < DAYS_OF_WEEK.length}
+            >
+              {calendarDate.workout
+                ? `${toMiles(calendarDate.workout.distance).toFixed(
+                    2
+                  )}mi in ${formatTime(
+                    calendarDate.workout.duration
+                  )}`
+                : null}
+            </CalendarDay>
+          );
+        }
+      );
+
+      const weeklySummary = (
+        <div class="text-sm ml-2">
+          <div class="font-bold">Weekly Summary</div>
+          <div>{toMiles(weeklyDistance).toFixed(2)} miles</div>
+          <div>{toFeet(weeklyAscent).toFixed(0)} ft climbed</div>
+          <div>{formatTime(weeklyDuration)} elapsed</div>
+        </div>
+      );
+
+      return calendarDateMarkup.concat(weeklySummary);
+    })
   }
 </div>

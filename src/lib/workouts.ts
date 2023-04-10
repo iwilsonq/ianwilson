@@ -12,7 +12,7 @@ const trackBase = Airtable.base('appRKlealQJaMbrRy');
 
 export interface Workout extends FieldSet {
   name: string;
-  distanceMi: number;
+  distance: number;
   duration: number;
   startTime: string;
   totalAscent: number;
