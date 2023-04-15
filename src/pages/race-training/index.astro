@@ -5,6 +5,7 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Calendar from '../../components/Calendar.astro';
+import { utcToZonedTime } from 'date-fns-tz';
 
 const targetDate = new Date(2023, 5, 17, 6);
 const duration = intervalToDuration({
@@ -19,10 +20,21 @@ const BASE_URL =
 
 const response = await fetch(`${BASE_URL}/api/workouts`);
 const data = await response.json();
-const workouts = data.records;
+const workouts = data.records.map((workout) => {
+  return {
+    ...workout,
+    startTime: utcToZonedTime(
+      workout.startTime,
+      'America/Los_Angeles'
+    ),
+  };
+});
 
 const url = new URL(Astro.request.url);
-let selectedDate = new Date();
+const selectedDate = utcToZonedTime(
+  new Date(),
+  'America/Los_Angeles'
+);
 let month = selectedDate.getMonth();
 
 const monthStr = url.searchParams.get('month');
