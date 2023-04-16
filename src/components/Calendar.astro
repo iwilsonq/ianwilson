@@ -8,6 +8,7 @@ import {
   subDays,
   addMonths,
   isSameDay,
+  isSameMonth,
 } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import CalendarDay from './CalendarDay.astro';
@@ -64,7 +65,8 @@ if (previousMonthFillerDays > 0) {
 
 for (
   let date = currentMonthStartDate;
-  date.getDate() < getDaysInMonth(currentMonthStartDate);
+  date.getDate() <= getDaysInMonth(currentMonthStartDate) &&
+  isSameMonth(date, currentMonthStartDate);
   date = addDays(date, 1)
 ) {
   calendarDates.push({
