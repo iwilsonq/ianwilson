@@ -1,16 +1,17 @@
-import Airtable, { FieldSet } from 'airtable';
+import type { FieldSet } from 'airtable';
 import dotenv from 'dotenv';
+import queryString from 'query-string';
 
 dotenv.config();
 
-Airtable.configure({
-  endpointUrl: 'https://api.airtable.com',
-  apiKey: process.env.AIRTABLE_ACCESS_TOKEN,
-});
+const BASE_ID = 'appRKlealQJaMbrRy';
+const TABLE_NAME = 'workouts';
+const BASE_URL = `https://api.airtable.com/v0/`;
 
-const trackBase = Airtable.base('appRKlealQJaMbrRy');
+const URL = `${BASE_URL}${BASE_ID}/${TABLE_NAME}`;
 
 export interface Workout extends FieldSet {
+  id: string;
   name: string;
   distance: number;
   duration: number;
@@ -26,24 +27,35 @@ export interface Workout extends FieldSet {
   maxSpeed: number;
 }
 
-export const Workouts = {
-  getAll(): Promise<Workout[]> {
-    return new Promise((resolve, reject) => {
-      trackBase<Workout>('workouts')
-        .select({ view: 'Grid view' })
-        .firstPage((err, records) => {
-          if (err) {
-            reject(err);
-            return;
-          }
-          if (!records) {
-            console.log('No records found');
-            resolve([]);
-            return;
-          }
+interface AirtableRecord<T extends FieldSet> {
+  id: string;
+  createdAt: string;
+  fields: T;
+}
 
-          resolve(records.map((record) => record.fields));
-        });
+interface AirtableApiResponse<T extends FieldSet> {
+  records: AirtableRecord<T>[];
+}
+
+export const Workouts = {
+  getAll({ limit }: { limit: string | null }): Promise<Workout[]> {
+    return new Promise((resolve, reject) => {
+      const query = queryString.stringify({ limit });
+      fetch(`${URL}?${query}`, {
+        headers: {
+          Authorization: `Bearer ${process.env.AIRTABLE_ACCESS_TOKEN}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const records = (
+            data as AirtableApiResponse<Workout>
+          ).records.map((record) => {
+            return { ...record.fields, id: record.id };
+          });
+          resolve(records as Workout[]);
+        })
+        .catch((err) => reject(err));
     });
   },
 };
