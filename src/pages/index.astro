@@ -13,6 +13,18 @@ import twitterLogo from '../../public/twitter.svg';
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <script
+      src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+      defer
+    ></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(function (OneSignal) {
+        OneSignal.init({
+          appId: '567491ee-9105-4a87-9cbc-ed78a571645b',
+        });
+      });
+    </script>
   </head>
   <body>
     <Header title={SITE_TITLE} />

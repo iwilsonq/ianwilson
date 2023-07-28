@@ -15,7 +15,7 @@ export interface Workout extends FieldSet {
   name: string;
   distance: number;
   duration: number;
-  startTime: string;
+  startTime: number;
   totalAscent: number;
   totalDescent: number;
   maxAltitude: number;
