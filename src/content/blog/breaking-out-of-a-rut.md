@@ -1,9 +1,9 @@
 ---
-title: "Breaking Out of a Rut or Creative Block"
-description: "Break through your creative block and unleash the power within."
-pubDate: "Jan 08 2020"
-slug: "breaking-out-of-a-rut"
-tags: ["productivity", "webdev"]
+title: 'Breaking Out of a Rut or Creative Block'
+description: 'Break through your creative block and unleash the power within.'
+pubDate: 'Jan 08 2020'
+slug: 'breaking-out-of-a-rut'
+tags: ['productivity', 'webdev']
 heroImage: https://images.unsplash.com/photo-1598978270333-62571dd762e9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80
 ---
 

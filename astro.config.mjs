@@ -6,18 +6,22 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
-import vercel from "@astrojs/vercel/serverless";
+import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
-  integrations: [mdx(), sitemap(), tailwind({
-    // Example: Disable injecting a basic `base.css` import on every page.
-    // Useful if you need to define and/or import your own custom `base.css`.
-    config: {
-      applyBaseStyles: false
-    }
-  })],
+  site: 'https://iwilsonq.com',
+  integrations: [
+    mdx(),
+    sitemap(),
+    tailwind({
+      // Example: Disable injecting a basic `base.css` import on every page.
+      // Useful if you need to define and/or import your own custom `base.css`.
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+  ],
   output: 'server',
-  adapter: vercel()
+  adapter: vercel(),
 });
