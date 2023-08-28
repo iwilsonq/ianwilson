@@ -1,9 +1,9 @@
 ---
 title: ReasonML with GraphQL, the Future of Type-Safe Web Applications
 description: Build a small ReasonReact web application that consumes a GraphQL endpoint using reason-apollo
-tags: ["reason","graphql","javascript","fp"]
-pubDate: Mar 13 2019
-slug: building-powerful-graphql-servers-with-rust
+tags: ['reason', 'graphql', 'javascript', 'fp']
+pubDate: 'Mar 13 2019'
+slug: reasonml-with-graphql
 heroImage: https://thepracticaldev.s3.amazonaws.com/i/aejew3ps1khqnw7gy0yk.png
 ---
 
@@ -188,20 +188,20 @@ Rather than create a todo app, I decided to create a list of video games that I 
 As we are working with a GraphQL server, we should be able to figure out exactly how to call it by observing the schema.
 
 ```graphql
-  type VideoGame {
-    id: ID!
-    title: String!
-    developer: String!
-    completed: Boolean!
-  }
+type VideoGame {
+  id: ID!
+  title: String!
+  developer: String!
+  completed: Boolean!
+}
 
-  type Query {
-    videoGames: [VideoGame!]!
-  }
+type Query {
+  videoGames: [VideoGame!]!
+}
 
-  type Mutation {
-    completeGame(id: ID!): VideoGame!
-  }
+type Mutation {
+  completeGame(id: ID!): VideoGame!
+}
 ```
 
 Currently, we have one query and one mutation, both of which operate around this `VideoGame` type. A GraphQL adept will notice that every return value is non-nullable, that is, these responses cannot return unset fields or null objects.

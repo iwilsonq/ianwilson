@@ -1,9 +1,9 @@
 ---
-title: "Building Powerful GraphQL Servers with Rust"
-description: "Let us see what goes into building a GraphQL server with Rust."
-pubDate: "Sep 13 2019"
-slug: "building-powerful-graphql-servers-with-rust"
-tags: ["rust", "graphql", "tutorial", "webdev"]
+title: Building Powerful GraphQL Servers with Rust
+description: Let us see what goes into building a GraphQL server with Rust.
+pubDate: Sep 13 2019
+slug: building-powerful-graphql-servers-with-rust
+tags: [rust, graphql, tutorial, webdev]
 heroImage: https://images.unsplash.com/photo-1593062037896-764e9f52029e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80
 ---
 
