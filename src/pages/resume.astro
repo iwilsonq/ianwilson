@@ -1,0 +1,256 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+
+// src/pages/resume.astro
+const title = "Resume - Ian Wilson";
+const description =
+  "Software Engineer specializing in full-stack development and distributed systems";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="bg-gray-50 py-8 px-4 font-sans text-gray-900">
+    <Header title={title} />
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 md:p-12">
+      <!-- Download Section -->
+      <div class="text-center mb-8 pb-8 border-b-2 border-gray-200">
+        <a
+          href="/files/Ian-Wilson-Resume.pdf"
+          download
+          class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors print:hidden"
+        >
+          <svg
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download PDF
+        </a>
+      </div>
+
+      <!-- Header -->
+      <header class="text-center mb-8 pb-6 border-b-2 border-gray-900">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">Ian Wilson</h1>
+        <div class="text-gray-600 text-sm md:text-base mb-3">
+          San Francisco, CA<br />
+          (408) 660-7729 • <a
+            href="mailto:iwilsonq@gmail.com"
+            class="text-blue-600 hover:underline">iwilsonq@gmail.com</a
+          >
+        </div>
+        <div
+          class="flex flex-wrap justify-center gap-3 md:gap-4 text-sm md:text-base"
+        >
+          <a
+            href="https://iwilsonq.com"
+            class="text-blue-600 hover:underline font-medium">iwilsonq.com</a
+          >
+          <a
+            href="https://github.com/iwilsonq"
+            class="text-blue-600 hover:underline font-medium">GitHub</a
+          >
+          <a
+            href="https://linkedin.com/in/iwilsonq"
+            class="text-blue-600 hover:underline font-medium">LinkedIn</a
+          >
+          <a
+            href="https://medium.com/@iwilsonq"
+            class="text-blue-600 hover:underline font-medium">Medium</a
+          >
+        </div>
+      </header>
+
+      <!-- Skills Section -->
+      <section class="mb-8">
+        <h2
+          class="text-xl font-bold uppercase tracking-wide mb-4 pb-2 border-b-2 border-gray-900"
+        >
+          Skills
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <strong class="block text-gray-900 font-semibold mb-1"
+              >Languages</strong
+            >
+            <span class="text-gray-700"
+              >TypeScript, JavaScript, Rust, Ruby, Golang, OCaml</span
+            >
+          </div>
+          <div>
+            <strong class="block text-gray-900 font-semibold mb-1"
+              >Backend</strong
+            >
+            <span class="text-gray-700"
+              >Kubernetes, HTTP, gRPC, Kafka, Grafana</span
+            >
+          </div>
+          <div>
+            <strong class="block text-gray-900 font-semibold mb-1"
+              >Frontend</strong
+            >
+            <span class="text-gray-700">React, Svelte, Astro, Tailwind</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section class="mb-8">
+        <h2
+          class="text-xl font-bold uppercase tracking-wide mb-4 pb-2 border-b-2 border-gray-900"
+        >
+          Experience
+        </h2>
+
+        <!-- OneSignal -->
+        <div class="mb-6">
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1"
+          >
+            <div>
+              <span class="font-bold text-lg">Senior Software Engineer</span>
+              <span class="text-gray-600"> -</span>
+              <span class="text-blue-600 font-semibold">OneSignal</span>
+            </div>
+            <span class="text-gray-600 text-sm md:text-base whitespace-nowrap"
+              >Mar 2020 - Present</span
+            >
+          </div>
+          <div class="text-gray-600 text-sm italic mb-2">San Mateo, CA</div>
+          <ul class="list-disc ml-6 space-y-2 text-gray-700">
+            <li>
+              Team lead experience working on third-party integrations,
+              including webhooks, public API surface, and infrastructure work
+            </li>
+            <li>
+              Built and scaled kafka consumers, gRPC, and HTTP microservices for
+              integrations team work to handle 10s of millions of messages per
+              day
+            </li>
+            <li>
+              Developed core product features such as integration marketplace,
+              webhook dashboard, and custom events
+            </li>
+          </ul>
+        </div>
+
+        <!-- Facebook -->
+        <div class="mb-6">
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1"
+          >
+            <div>
+              <span class="font-bold text-lg">Software Engineer</span>
+              <span class="text-gray-600"> -</span>
+              <span class="text-blue-600 font-semibold">K2 @Facebook</span>
+            </div>
+            <span class="text-gray-600 text-sm md:text-base whitespace-nowrap"
+              >Feb 2019 - Mar 2020</span
+            >
+          </div>
+          <div class="text-gray-600 text-sm italic mb-2">Menlo Park, CA</div>
+          <ul class="list-disc ml-6 space-y-2 text-gray-700">
+            <li>
+              Developed internal solutions for business applications and legal
+              tools
+            </li>
+            <li>
+              Technologies used include JavaScript with React and Flowtype,
+              PHP/Hack for backend work
+            </li>
+          </ul>
+        </div>
+
+        <!-- BCG / Boston Scientific -->
+        <div class="mb-6">
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1"
+          >
+            <div>
+              <span class="font-bold text-lg">Full Stack Developer</span>
+              <span class="text-gray-600"> -</span>
+              <span class="text-blue-600 font-semibold"
+                >BCG Digital Ventures / Boston Scientific</span
+              >
+            </div>
+            <span class="text-gray-600 text-sm md:text-base whitespace-nowrap"
+              >Mar 2017 - Feb 2019</span
+            >
+          </div>
+          <div class="text-gray-600 text-sm italic mb-2">
+            Mountain View, CA / San Jose, CA
+          </div>
+          <ul class="list-disc ml-6 space-y-2 text-gray-700">
+            <li>
+              Developed the admin portal and content management system for
+              PainScale, a multi-platform app that assists users in dealing with
+              chronic pain
+            </li>
+            <li>
+              Largely client-side, built with React, Redux; server layer built
+              with Node
+            </li>
+            <li>
+              Developed React Native mobile client for internal messaging app
+              using TypeScript, Node and MongoDB; served over GraphQL
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Community Section -->
+      <section class="mb-8">
+        <h2
+          class="text-xl font-bold uppercase tracking-wide mb-4 pb-2 border-b-2 border-gray-900"
+        >
+          Community
+        </h2>
+        <ul class="list-disc ml-6 space-y-2 text-gray-700">
+          <li>
+            Technical blogger on Medium and dev.to, writing articles about
+            GraphQL, React, and modern web development
+          </li>
+          <li>Conference attendee and open-source contributor</li>
+        </ul>
+      </section>
+
+      <!-- Education Section -->
+      <section class="mb-8">
+        <h2
+          class="text-xl font-bold uppercase tracking-wide mb-4 pb-2 border-b-2 border-gray-900"
+        >
+          Education
+        </h2>
+        <div>
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1"
+          >
+            <div>
+              <span class="font-bold text-lg">B.S. Physics</span>
+              <span class="text-gray-600"> -</span>
+              <span class="text-blue-600 font-semibold">UC Santa Barbara</span>
+            </div>
+            <span class="text-gray-600 text-sm md:text-base whitespace-nowrap"
+              >2014 - 2016</span
+            >
+          </div>
+          <ul class="list-disc ml-6 space-y-2 text-gray-700">
+            <li>
+              Curriculum in physics including laboratory experiments with data
+              analysis conducted with Python and courses with emphasis on 3D
+              mathematics
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
